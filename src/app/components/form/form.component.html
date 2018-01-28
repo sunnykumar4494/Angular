@@ -1,0 +1,54 @@
+<!-- Template driven FORM -->
+
+<form  name="myform"  #userForm="ngForm"  (ngSubmit)="SaveFormData(userForm)">
+
+  <div class="form-group">
+      <label for="firstName">FirstName</label>
+      <input  required ngModel name="firstName" minlength="3" maxlength="10" type="text"  #firstName="ngModel" (change)="log(firstName)"  class="form-control">
+        <div class="alert alert-danger"  *ngIf="!firstName.valid  && firstName.touched">
+          <div  *ngIf="firstName.errors.required">
+          FIrst Name is Required  
+          </div>
+
+          <div  *ngIf="firstName.errors.minlength">
+              3 charecter is required for FIrst Name
+          </div>
+
+        </div>    
+        
+  </div>
+
+ <div class="form-group">
+   <label for="comment">Comments</label>
+   <input type="text" ngModel name="comment" #comment="ngModel" id="comment" class="form-control">
+  </div>
+  <button class="btn btn-primary" type="button" (click)="btnSave()">SAVE</button>
+  <button class="btn btn-primary" type="submit">SUBMIT</button>
+  </form>
+
+<!--
+  <form>
+      <form class="example-form">
+          <mat-form-field class="example-full-width">
+            <input matInput minlength="5" required ngModel name="favFood" #favFood="ngModel" placeholder="Favorite food" value="SUSHI   ">
+            <div class="alert alert-danger"  *ngIf="!favFood.valid  && favFood.touched">
+                <div  *ngIf="favFood.errors.required">
+                FIrst Name is Required  
+                </div>
+      
+                <div  *ngIf="favFood.errors.minlength">
+                    3 charecter is required for FIrst Name
+                </div>
+      
+              </div>
+         
+          </mat-form-field>
+        
+           
+          <mat-form-field class="example-full-width">
+            <textarea matInput placeholder="Leave a comment"></textarea>
+          </mat-form-field>
+        </form>  
+        
+  </form>
+-->
